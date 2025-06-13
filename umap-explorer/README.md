@@ -1,75 +1,68 @@
-# Nuxt Minimal Starter
+# UMAP Explorer
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Interactive web-based visualization for exploring UMAP parameter combinations on embedding data.
+
+## Features
+
+- **Interactive UMAP Visualization**: Explore different parameter combinations (n_neighbors, min_dist, metric)
+- **WebGL Rendering**: Fast scatter plot rendering with regl-scatterplot
+- **Color-coded Points**: Folder-based color coding for note organization
+- **Parameter Switching**: Real-time switching between different UMAP configurations
 
 ## Setup
 
-Make sure to install dependencies:
+Install dependencies:
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+## Usage
 
-Start the development server on `http://localhost:3000`:
+1. **Place your UMAP data**: Copy your UMAP parameter surf JSON file to the `public/` directory
+2. **Start development server**:
+   ```bash
+   npm run dev
+   ```
+3. **Open browser**: Navigate to `http://localhost:3000` (or the port shown in terminal)
 
-```bash
-# npm
-npm run dev
+## Data Format
 
-# pnpm
-pnpm dev
+The app expects UMAP parameter surf data in this format:
 
-# yarn
-yarn dev
-
-# bun
-bun run dev
+```json
+{
+  "timestamp": "2025-06-13T14:19:30",
+  "totalSamples": 2000,
+  "results": [
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.0,
+        "metric": "cosine"
+      },
+      "data": [
+        {
+          "x": 2.7485,
+          "y": 14.5584,
+          "folder": "/path/to/folder",
+          "folderColor": 4,
+          "wordCount": 43,
+          "title": "Note Title",
+          "chunkText": "Content...",
+          "filePath": "/full/path/to/file.md"
+        }
+      ]
+    }
+  ]
+}
 ```
 
-## Production
+## Development
 
-Build the application for production:
+Built with:
+- **Nuxt 3**: Vue.js framework
+- **regl-scatterplot**: WebGL-accelerated scatter plots
+- **Vue 3**: Reactive UI framework
 
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+For more details, see the [main project README](../README.md).
