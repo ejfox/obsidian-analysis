@@ -1,0 +1,1 @@
+- [] - Fix `npm run analyze` script

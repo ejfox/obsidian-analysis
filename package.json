@@ -1,0 +1,28 @@
+{
+  "name": "obsidian-embeddings",
+  "version": "1.0.0",
+  "description": "Generate embeddings for Obsidian notes using LM Studio and Nomic",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "generate": "node src/generate-embeddings.js",
+    "search": "node src/search.js",
+    "export": "node src/export-embeddings.js",
+    "analyze": "node src/analyze-embeddings.js",
+    "preflight": "node src/preflight-check.js",
+    "tsne-surf": "node src/tsne-parameter-surf.js",
+    "umap-surf": "node src/umap-parameter-surf.js"
+  },
+  "dependencies": {
+    "sqlite3": "^5.1.7",
+    "gray-matter": "^4.0.3",
+    "glob": "^10.3.10",
+    "axios": "^1.6.5",
+    "chalk": "^5.3.0",
+    "ora": "^8.0.1",
+    "commander": "^11.1.0",
+    "dotenv": "^16.3.1",
+    "js-tiktoken": "^1.0.8"
+  }
+}
