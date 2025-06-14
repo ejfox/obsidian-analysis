@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "Bash(npm install)",
+      "Bash(npm start:*)",
+      "Bash(sqlite3:*)",
+      "Bash(npm run preflight:*)",
+      "Bash(node:*)",
+      "Bash(rm:*)",
+      "Bash(grep:*)",
+      "Bash(python:*)",
+      "Bash(pip install:*)",
+      "Bash(npm install:*)",
+      "Bash(gh repo create:*)"
+    ],
+    "deny": []
+  }
+}
