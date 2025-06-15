@@ -44,19 +44,25 @@ const plotSize = computed(() => {
 <style scoped>
 .small-multiples-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 32px;
   height: calc(100vh - 100px);
   overflow-y: auto;
+  place-items: center;
+  align-content: center;
 }
 
 .plot-container {
   background: rgba(0, 0, 0, 0.9);
-  border: 1px solid #1a1a1a;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .plot-container::before {
@@ -80,13 +86,14 @@ const plotSize = computed(() => {
 }
 
 .plot-header {
-  padding: 10px;
-  border-bottom: 1px solid #1a1a1a;
+  padding: 12px 16px;
   display: flex;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: 10px;
   color: #00ff00;
   text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.8);
+  flex-shrink: 0;
 }
 
 .param-label {

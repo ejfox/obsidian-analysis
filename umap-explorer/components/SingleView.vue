@@ -1,5 +1,5 @@
 <template>
-  <div class="cyberpunk-explorer" @keydown="handleKeydown" tabindex="0">
+  <div class="single-view" @keydown="handleKeydown" tabindex="0">
     <!-- Terminal-style header -->
     <div class="terminal-header">
       <span class="prompt">root@mind:~$</span>
@@ -15,7 +15,7 @@
     <div class="search-interface">
       <input 
         v-model="searchQuery" 
-        placeholder="> query your mind..."
+        placeholder="> search"
         @input="executeSearch"
         class="terminal-input"
         ref="searchInput"
@@ -73,19 +73,15 @@
     <!-- Insights panel -->
     <div class="insights-panel">
       <div class="insight-btn" @click="showObsessions()">
-        <span class="icon">🔥</span>
         <span>OBSESSIONS</span>
       </div>
       <div class="insight-btn" @click="showOrphans()">
-        <span class="icon">🏝️</span>
         <span>ORPHANS</span>
       </div>
       <div class="insight-btn" @click="showQuestions()">
-        <span class="icon">❓</span>
         <span>QUESTIONS</span>
       </div>
       <div class="insight-btn" @click="showEvolution()">
-        <span class="icon">📈</span>
         <span>EVOLUTION</span>
       </div>
     </div>
@@ -131,7 +127,13 @@ const modes = [
 ]
 
 const thoughtData = computed(() => {
-  return props.umapData.results?.[0]?.data || []
+  const data = props.umapData.results?.[0]?.data || []
+  console.log('ThoughtData computed:', { 
+    resultsLength: props.umapData.results?.length,
+    hasFirstResult: !!props.umapData.results?.[0],
+    dataLength: data.length
+  })
+  return data
 })
 
 const searchResults = computed(() => {
@@ -158,6 +160,8 @@ const visibleConnections = computed(() => {
 })
 
 const getScreenPosition = (thought) => {
+  if (!thoughtData.value.length) return { x: 0, y: 0 }
+  
   const xValues = thoughtData.value.map(p => p.x)
   const yValues = thoughtData.value.map(p => p.y)
   const xMin = Math.min(...xValues)
@@ -165,12 +169,15 @@ const getScreenPosition = (thought) => {
   const yMin = Math.min(...yValues)
   const yMax = Math.max(...yValues)
   
-  const normalizedX = (thought.x - xMin) / (xMax - xMin)
-  const normalizedY = 1 - (thought.y - yMin) / (yMax - yMin)
+  // Exactly match the scatterplot coordinate transformation
+  const normalizedX = ((2 * (thought.x - xMin) / (xMax - xMin) - 1) + pan.value.x) / zoom.value
+  const normalizedY = ((2 * (thought.y - yMin) / (yMax - yMin) - 1) + pan.value.y) / zoom.value
   
+  // regl-scatterplot maps [-1,1] to [0, canvas.width/height]
+  // The canvas coordinate system has (0,0) at top-left
   return {
-    x: normalizedX * canvasSize.width,
-    y: normalizedY * canvasSize.height
+    x: (normalizedX + 1) * canvasSize.width / 2,
+    y: (1 - normalizedY) * canvasSize.height / 2
   }
 }
 
@@ -231,6 +238,12 @@ const switchMode = (mode) => {
 const selectThought = (thought) => {
   selectedThought.value = thought
   showConnections.value = true
+  console.log('Selected thought position:', {
+    raw: { x: thought.x, y: thought.y },
+    screen: getScreenPosition(thought),
+    pan: pan.value,
+    zoom: zoom.value
+  })
   updateVisualization()
 }
 
@@ -309,6 +322,11 @@ const showObsessions = () => {
     folders[folder].push(thought)
   })
   
+  if (!folders || Object.keys(folders).length === 0) {
+    console.log('No folders found')
+    return
+  }
+  
   const topFolders = Object.entries(folders)
     .sort(([,a], [,b]) => b.length - a.length)
     .slice(0, 3)
@@ -363,16 +381,35 @@ const highlightThoughts = (thoughts) => {
 }
 
 const updateVisualization = async () => {
-  if (!canvas.value || !thoughtData.value.length) return
+  if (!canvas.value || !thoughtData.value?.length || !props.umapData?.results?.length) {
+    console.log('No canvas or no data:', { 
+      hasCanvas: !!canvas.value, 
+      dataLength: thoughtData.value?.length,
+      hasResults: !!props.umapData?.results?.length,
+      umapData: props.umapData 
+    })
+    return
+  }
   
   if (!scatterplot) {
     const createScatterplot = (await import('regl-scatterplot')).default
+    
+    // Generate color palette for semantic clustering
+    const colorPalette = []
+    for (let i = 0; i < 256; i++) {
+      const hue = (i / 255) * 360
+      const color = `hsl(${hue}, 70%, 60%)`
+      colorPalette.push(color)
+    }
+    
     scatterplot = createScatterplot({
       canvas: canvas.value,
       width: canvasSize.width,
       height: canvasSize.height,
       pointSize: 5,
-      background: [0.02, 0.02, 0.02, 1],
+      backgroundColor: [0.02, 0.02, 0.02, 1],
+      pointColor: colorPalette,
+      colorBy: 'valueA'  // Use the 3rd value in [x, y, colorValue] for color mapping
     })
   }
   
@@ -417,18 +454,24 @@ const updateVisualization = async () => {
 }
 
 watch(() => props.umapData, () => {
-  updateVisualization()
-})
+  console.log('SingleView: umapData changed', props.umapData?.results?.length)
+  if (props.umapData?.results?.length > 0) {
+    updateVisualization()
+  }
+}, { deep: true })
 
 onMounted(() => {
-  updateVisualization()
+  console.log('SingleView: mounted with data length', props.umapData?.results?.length)
+  if (props.umapData?.results?.length > 0) {
+    updateVisualization()
+  }
 })
 </script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
-.cyberpunk-explorer {
+.single-view {
   width: 100vw;
   height: 100vh;
   background: #0a0a0a;
@@ -653,9 +696,7 @@ onMounted(() => {
   font-size: 10px;
   transition: all 0.15s ease;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 5px;
 }
 
 .insight-btn:hover {
@@ -664,9 +705,6 @@ onMounted(() => {
   background: rgba(0, 255, 0, 0.1);
 }
 
-.icon {
-  font-size: 16px;
-}
 
 .connections-overlay {
   position: absolute;

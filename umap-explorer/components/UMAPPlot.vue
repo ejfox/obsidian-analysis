@@ -29,16 +29,24 @@ let canvas = null
 const colorScale = scaleSequential(interpolateTurbo).domain([0, 1])
 
 const initScatterplot = () => {
-  if (!plotContainer.value || !createScatterplot) return
+  if (!plotContainer.value || !createScatterplot || !props.plotData || props.plotData.length === 0) {
+    return
+  }
   
-  // Destroy existing scatterplot first
-  if (scatterplot) {
-    scatterplot.destroy()
+  // Safely destroy existing scatterplot first
+  if (scatterplot && typeof scatterplot.destroy === 'function') {
+    try {
+      scatterplot.destroy()
+    } catch (e) {
+      console.warn('Error destroying scatterplot:', e)
+    }
     scatterplot = null
   }
   
   // Clear container
-  plotContainer.value.innerHTML = ''
+  if (plotContainer.value) {
+    plotContainer.value.innerHTML = ''
+  }
   
   // Create canvas
   canvas = document.createElement('canvas')
@@ -46,11 +54,10 @@ const initScatterplot = () => {
   canvas.height = props.height
   plotContainer.value.appendChild(canvas)
   
-  // Generate turbo color palette
-  const numColors = 100
+  // Generate color palette exactly as regl-scatterplot expects
   const colorPalette = []
-  for (let i = 0; i < numColors; i++) {
-    const value = i / (numColors - 1)
+  for (let i = 0; i < 256; i++) {
+    const value = i / 255
     const rgb = colorScale(value)
     const matches = rgb.match(/\d+/g)
     if (matches) {
@@ -61,26 +68,27 @@ const initScatterplot = () => {
     }
   }
 
-  // Initialize regl-scatterplot
+  // Clean minimal config that regl-scatterplot definitely supports
   scatterplot = createScatterplot({
-    canvas,
+    canvas: canvas,
     width: props.width,
     height: props.height,
-    pointSize: props.pointSize,
-    pointSizeSelected: props.pointSize * 1.5,
-    pointOutlineWidth: 1,
-    background: [0.04, 0.04, 0.04, 1],
+    pointSize: props.pointSize || 5,
+    backgroundColor: [0.04, 0.04, 0.04, 1],
     pointColor: colorPalette,
-    colorBy: 'value',
-    lassoColor: [0, 1, 0, 0.8],
-    showRecticle: props.interactive,
-    reticleColor: [0, 1, 0, 1]
+    colorBy: 'valueA'  // Tell it to use the 3rd value in [x, y, colorValue] for color
   })
   
   // Event handlers
   if (props.interactive) {
     scatterplot.subscribe('select', handleSelection)
     scatterplot.subscribe('hover', handleHover)
+  } else {
+    // Disable wheel events for non-interactive plots
+    canvas.addEventListener('wheel', (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+    }, { passive: false })
   }
   
   updatePlot()
@@ -88,7 +96,6 @@ const initScatterplot = () => {
 
 const updatePlot = () => {
   if (!scatterplot || !props.plotData || props.plotData.length === 0) {
-    console.log('updatePlot early return:', { scatterplot: !!scatterplot, plotDataLength: props.plotData?.length })
     return
   }
   
@@ -104,58 +111,48 @@ const updatePlot = () => {
   const xPadding = (xMax - xMin) * 0.05
   const yPadding = (yMax - yMin) * 0.05
   
-  // Prepare points with normalized color values
-  const points = props.plotData.map((point, idx) => {
-    // Normalize coordinates to [-1, 1]
+  // Prepare points exactly as regl-scatterplot expects: [x, y, colorValue]
+  const points = props.plotData.map((point) => {
+    // Normalize coordinates to [-1, 1] as required by regl-scatterplot
     const x = 2 * (point.x - xMin + xPadding) / (xMax - xMin + 2 * xPadding) - 1
     const y = 2 * (point.y - yMin + yPadding) / (yMax - yMin + 2 * yPadding) - 1
     
-    // Calculate color value based on scheme (keep as 0-1 range)
+    // Calculate color value (0-1 range) based on scheme
     let colorValue = 0.5
     switch(props.colorScheme) {
       case 'modularity':
-        // Use real community color from modularity detection
         colorValue = point.communityColor !== undefined ? point.communityColor : 
                     (point.folderColor || point.folderDepth || 0) / 10
         break
       case 'temporal':
-        // Use relative position as proxy for time
         colorValue = point.relativePosition || 0.5
         break
       case 'size':
-        // Normalize word count
         colorValue = Math.min(point.wordCount / 1000, 1)
         break
       case 'connections':
-        // Use number of links as proxy
         colorValue = point.hasLinks ? 0.8 : 0.2
         break
     }
     
-    // Debug log for first few points
-    if (idx < 10) {
-      console.log(`Point ${idx}: scheme=${props.colorScheme}, colorValue=${colorValue}, community=${point.community}, communityColor=${point.communityColor}`)
-    }
+    // Ensure colorValue is between 0 and 1
+    colorValue = Math.max(0, Math.min(1, colorValue))
     
-    // Return [x, y, colorValue] - regl will map colorValue to color palette
     return [x, y, colorValue]
   })
   
-  // Set up the color mapping
-  scatterplot.set({
-    colorBy: 'valueA' // Use the first data value (colorValue) for color
-  })
-  
-  console.log('Drawing', points.length, 'points with color mapping')
+  // Draw the points - regl-scatterplot will handle color mapping automatically  
   scatterplot.draw(points)
 }
 
 const handleSelection = ({ points: selectedIndices }) => {
-  const selectedData = selectedIndices.map(idx => ({
-    ...props.plotData[idx],
-    index: idx
-  }))
-  emit('point-select', selectedData)
+  if (selectedIndices && selectedIndices.length > 0) {
+    const selectedData = selectedIndices.map(idx => ({
+      ...props.plotData[idx],
+      index: idx
+    }))
+    emit('point-select', selectedData)
+  }
 }
 
 const handleHover = ({ point: hoveredIndex }) => {
@@ -173,22 +170,32 @@ onMounted(async () => {
 })
 
 onUnmounted(() => {
-  if (scatterplot) {
-    scatterplot.destroy()
+  if (scatterplot && typeof scatterplot.destroy === 'function') {
+    try {
+      scatterplot.destroy()
+    } catch (e) {
+      console.warn('Error destroying scatterplot on unmount:', e)
+    }
   }
 })
 
 // Watch for data changes
-watch(() => [props.plotData, props.colorScheme, props.selectedPoints], () => {
+watch(() => [props.plotData, props.colorScheme], () => {
   updatePlot()
 }, { deep: true })
 
 // Watch for size changes
 watch(() => [props.width, props.height], () => {
-  if (scatterplot) {
-    scatterplot.destroy()
-    plotContainer.value.innerHTML = ''
-    initScatterplot()
+  if (scatterplot && typeof scatterplot.destroy === 'function') {
+    try {
+      scatterplot.destroy()
+      if (plotContainer.value) {
+        plotContainer.value.innerHTML = ''
+      }
+      initScatterplot()
+    } catch (e) {
+      console.warn('Error handling size change:', e)
+    }
   }
 })
 </script>

@@ -12,6 +12,7 @@
     </div>
     
     <div class="fullscreen-content">
+      <!-- Full-window scatterplot -->
       <div class="plot-area">
         <ClientOnlyPlot
           :plot-data="plotData.data"
@@ -32,11 +33,13 @@
         </div>
       </div>
       
+      <!-- Floating overlay sidebar -->
       <ChunkDetails 
         v-if="selectedChunks.length > 0"
         :chunks="selectedChunks"
         :related-chunks="relatedChunks"
         @close="clearSelection"
+        class="floating-sidebar"
       />
     </div>
   </div>
@@ -60,7 +63,7 @@ const hoveredChunk = ref(null)
 const mousePosition = ref({ x: 0, y: 0 })
 
 const plotDimensions = computed(() => ({
-  width: selectedChunks.value.length > 0 ? window.innerWidth - 400 : window.innerWidth - 40,
+  width: window.innerWidth,
   height: window.innerHeight - 80
 }))
 
@@ -214,14 +217,30 @@ onUnmounted(() => {
 }
 
 .fullscreen-content {
-  display: flex;
+  position: relative;
   height: calc(100vh - 80px);
+  overflow: hidden;
 }
 
 .plot-area {
-  flex: 1;
-  position: relative;
-  padding: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.floating-sidebar {
+  position: absolute !important;
+  top: 24px;
+  right: 24px;
+  width: 420px !important;
+  height: calc(100vh - 140px) !important;
+  background: rgba(10, 10, 10, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8) !important;
 }
 
 .hover-tooltip {

@@ -19,7 +19,7 @@
       </button>
     </div>
     
-    <CyberpunkMindExplorer 
+    <SingleView 
       v-if="currentView === 'explorer' && umapData.results?.length" 
       :umap-data="umapData" 
     />
@@ -36,7 +36,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import CyberpunkMindExplorer from './components/CyberpunkMindExplorer.vue'
+import SingleView from './components/SingleView.vue'
 import UMAPExplorer from './components/UMAPExplorer.vue'
 
 const umapData = ref({ results: [], totalSamples: 0 })
