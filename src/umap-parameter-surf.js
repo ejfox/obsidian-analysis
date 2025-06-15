@@ -80,7 +80,7 @@ async function loadEmbeddingsFromDB(maxSamples = 2000) {
   return { vectors, metadata };
 }
 
-async function exportForPythonUMAP(maxSamples = 2000) {
+async function exportForPythonUMAP(maxSamples = 2000, mode = 'expanded') {
   console.log(chalk.blue('🗺️  UMAP Parameter Exploration Setup'));
   
   // Load data
@@ -122,42 +122,123 @@ def load_data():
     metadata = pd.DataFrame(json.load(open('${exportPath}_metadata.json')))
     return embeddings, metadata
 
-def explore_umap_parameters():
+def generate_parameter_grid(mode='expanded'):
+    """
+    Generate parameter combinations with smart interpolations.
+    Modes: 'basic' (9), 'expanded' (32-64), 'comprehensive' (100+)
+    """
+    
+    if mode == 'basic':
+        # Original 9 combinations
+        n_neighbors = [5, 15, 30]
+        min_dists = [0.0, 0.1, 0.5]
+        metrics = ['cosine']
+    
+    elif mode == 'expanded':
+        # Smart parameter selection for visual exploration (32-64 combinations)
+        # Non-linear progression for n_neighbors (more granular at lower values)
+        n_neighbors = [3, 5, 8, 12, 15, 20, 30, 40, 50, 75, 100]
+        
+        # Fine-grained min_dist for smooth transitions
+        min_dists = [0.0, 0.05, 0.1, 0.2, 0.3, 0.5, 0.7, 0.9]
+        
+        # Include key metrics
+        metrics = ['cosine', 'euclidean', 'manhattan']
+        
+        # Create targeted combinations for visual interest
+        param_sets = []
+        
+        # 1. Full cosine sweep (most important) - 22 combinations
+        for n in [3, 5, 15, 30, 50, 100]:
+            for d in [0.0, 0.1, 0.3, 0.5]:
+                param_sets.append({'n_neighbors': n, 'min_dist': d, 'metric': 'cosine'})
+        
+        # 2. Euclidean at key points - 12 combinations  
+        for n in [5, 15, 30, 50]:
+            for d in [0.0, 0.1, 0.5]:
+                param_sets.append({'n_neighbors': n, 'min_dist': d, 'metric': 'euclidean'})
+        
+        # 3. Manhattan for contrast - 6 combinations
+        for n in [5, 30, 50]:
+            for d in [0.1, 0.3]:
+                param_sets.append({'n_neighbors': n, 'min_dist': d, 'metric': 'manhattan'})
+        
+        # 4. Fine transitions around interesting regions - 12 combinations
+        # Low n_neighbors with varied min_dist (tight clusters)
+        for d in [0.0, 0.05, 0.1, 0.15]:
+            param_sets.append({'n_neighbors': 8, 'min_dist': d, 'metric': 'cosine'})
+        
+        # Medium n_neighbors with smooth transitions
+        for d in [0.2, 0.25, 0.3, 0.35]:
+            param_sets.append({'n_neighbors': 20, 'min_dist': d, 'metric': 'cosine'})
+        
+        # High n_neighbors (global structure)
+        for d in [0.4, 0.6, 0.8, 1.0]:
+            param_sets.append({'n_neighbors': 75, 'min_dist': d, 'metric': 'cosine'})
+        
+        # Total: ~52 combinations
+        return param_sets
+    
+    elif mode == 'comprehensive':
+        # Full grid (100+ combinations) - use sparingly
+        param_sets = []
+        for n in [3, 5, 8, 12, 15, 20, 25, 30, 40, 50, 75, 100, 150]:
+            for d in [0.0, 0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5, 0.7, 0.9, 1.0]:
+                for m in ['cosine', 'euclidean']:
+                    param_sets.append({'n_neighbors': n, 'min_dist': d, 'metric': m})
+        return param_sets
+    
+    # Default grid construction for basic mode
+    param_sets = []
+    for n in n_neighbors:
+        for d in min_dists:
+            for m in metrics:
+                param_sets.append({'n_neighbors': n, 'min_dist': d, 'metric': m})
+    
+    return param_sets
+
+def explore_umap_parameters(mode='expanded', batch_process=True):
     embeddings, metadata = load_data()
     print(f"Loaded {len(embeddings)} embeddings with {len(embeddings[0])} dimensions")
     
-    # Parameter combinations to explore
-    param_sets = [
-        {'n_neighbors': 5, 'min_dist': 0.0, 'metric': 'cosine'},
-        {'n_neighbors': 5, 'min_dist': 0.1, 'metric': 'cosine'},
-        {'n_neighbors': 5, 'min_dist': 0.5, 'metric': 'cosine'},
-        {'n_neighbors': 15, 'min_dist': 0.0, 'metric': 'cosine'},
-        {'n_neighbors': 15, 'min_dist': 0.1, 'metric': 'cosine'},
-        {'n_neighbors': 15, 'min_dist': 0.5, 'metric': 'cosine'},
-        {'n_neighbors': 30, 'min_dist': 0.0, 'metric': 'cosine'},
-        {'n_neighbors': 30, 'min_dist': 0.1, 'metric': 'cosine'},
-        {'n_neighbors': 30, 'min_dist': 0.5, 'metric': 'cosine'},
-        {'n_neighbors': 50, 'min_dist': 0.0, 'metric': 'cosine'},
-        {'n_neighbors': 50, 'min_dist': 0.1, 'metric': 'cosine'},
-        {'n_neighbors': 50, 'min_dist': 0.5, 'metric': 'cosine'},
-        # Try euclidean for comparison
-        {'n_neighbors': 15, 'min_dist': 0.1, 'metric': 'euclidean'},
-        {'n_neighbors': 30, 'min_dist': 0.1, 'metric': 'euclidean'},
-        {'n_neighbors': 50, 'min_dist': 0.1, 'metric': 'euclidean'},
-        # Different min_dist values
-        {'n_neighbors': 30, 'min_dist': 0.25, 'metric': 'cosine'},
-        {'n_neighbors': 30, 'min_dist': 0.75, 'metric': 'cosine'},
-        {'n_neighbors': 30, 'min_dist': 1.0, 'metric': 'cosine'},
-    ]
+    # Get parameter combinations
+    param_sets = generate_parameter_grid(mode)
+    print(f"\\nExploring {len(param_sets)} parameter combinations in '{mode}' mode")
     
     results = []
+    
+    # Pre-compute PCA for faster UMAP (optional but recommended)
+    if len(embeddings[0]) > 100 and batch_process:
+        print("\\nApplying PCA preprocessing for faster computation...")
+        from sklearn.decomposition import PCA
+        pca = PCA(n_components=50, random_state=42)
+        embeddings_pca = pca.fit_transform(embeddings)
+        print(f"Reduced from {len(embeddings[0])} to 50 dimensions")
+    else:
+        embeddings_pca = embeddings
     
     # Folder colors for consistency
     folder_counts = metadata['folder_path'].value_counts()
     top_folders = folder_counts.head(8).index.tolist()
     
-    for i, params in enumerate(param_sets):
-        print(f"Computing UMAP {i+1}/{len(param_sets)}: {params}")
+    # Batch processing for efficiency
+    if batch_process and len(param_sets) > 20:
+        print("\\nUsing batch processing for efficiency...")
+        # Process in batches to show progress
+        batch_size = 10
+        for batch_start in range(0, len(param_sets), batch_size):
+            batch_end = min(batch_start + batch_size, len(param_sets))
+            print(f"\\nProcessing batch {batch_start//batch_size + 1}/{(len(param_sets) + batch_size - 1)//batch_size}")
+            
+            for i in range(batch_start, batch_end):
+                params = param_sets[i]
+                process_single_umap(i, params, embeddings_pca, metadata, top_folders, results, param_sets)
+    else:
+        for i, params in enumerate(param_sets):
+            process_single_umap(i, params, embeddings_pca, metadata, top_folders, results, param_sets)
+
+def process_single_umap(i, params, embeddings, metadata, top_folders, results, param_sets):
+        print(f"  [{i+1:2d}/{len(param_sets)}] n={params['n_neighbors']:3d}, d={params['min_dist']:.2f}, {params['metric']:9s}", end='')
         
         start_time = time.time()
         
@@ -205,17 +286,24 @@ def explore_umap_parameters():
                 }
             })
             
-            print(f"  ✓ Complete in {compute_time:.1f}s")
+            print(f" ✓ {compute_time:.1f}s")
             
         except Exception as e:
-            print(f"  ✗ Failed: {e}")
-            continue
+            print(f" ✗ Failed: {e}")
+            return
     
-    # Export results
+    # Export results with enhanced metadata
     output = {
         'timestamp': '${timestamp}',
+        'mode': mode,
         'totalSamples': len(embeddings),
+        'parameterCount': len(param_sets),
         'results': results,
+        'parameterSpace': {
+            'n_neighbors': sorted(list(set(p['n_neighbors'] for p in param_sets))),
+            'min_dist': sorted(list(set(p['min_dist'] for p in param_sets))),
+            'metrics': sorted(list(set(p['metric'] for p in param_sets)))
+        },
         'colorSchemes': {
             'folder': {
                 'name': 'Folder',
@@ -257,7 +345,9 @@ def explore_umap_parameters():
         print(f"{i+1:2d}. N={p['n_neighbors']:2d}, D={p['min_dist']:.1f}, {p['metric'][:8]:8s} - {t:.1f}s")
 
 if __name__ == "__main__":
-    explore_umap_parameters()
+    import sys
+    mode = sys.argv[1] if len(sys.argv) > 1 else 'expanded'
+    explore_umap_parameters(mode=mode)
 `;
 
   fs.writeFileSync(`${exportPath}_umap_explorer.py`, pythonScript);
@@ -281,9 +371,11 @@ program
   .name('umap-parameter-surf')
   .description('Generate UMAP parameter exploration data for regl-scatterplot')
   .option('-s, --samples <number>', 'maximum samples to use', '2000')
+  .option('-m, --mode <mode>', 'parameter grid mode: basic, expanded, comprehensive', 'expanded')
   .action(async (options) => {
     const maxSamples = parseInt(options.samples);
-    await exportForPythonUMAP(maxSamples);
+    const mode = options.mode;
+    await exportForPythonUMAP(maxSamples, mode);
   });
 
 program.parse();

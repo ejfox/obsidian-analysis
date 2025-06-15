@@ -45,11 +45,13 @@ const colorSchemes = [
 
 const loadData = async () => {
   try {
-    const response = await fetch('/umap_parameter_surf_with_communities.json')
+    const response = await fetch('/orcmanl_umap_64_combinations.json')
     const data = await response.json()
     
-    // Extract top 9 parameter combinations for grid view
-    parameterSets.value = data.results.slice(0, 9).map(result => ({
+    console.log('Loaded UMAP data:', data.results?.length, 'combinations')
+    
+    // Show all available parameter combinations (up to 64)
+    parameterSets.value = data.results.slice(0, 64).map(result => ({
       id: result.metadata.parameterString,
       params: result.parameters,
       data: result.data,

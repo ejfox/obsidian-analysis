@@ -30,6 +30,12 @@ const colorScale = scaleSequential(interpolateTurbo).domain([0, 1])
 
 const initScatterplot = () => {
   if (!plotContainer.value || !createScatterplot || !props.plotData || props.plotData.length === 0) {
+    console.log('UMAPPlot initScatterplot early return:', {
+      hasContainer: !!plotContainer.value,
+      hasCreateScatterplot: !!createScatterplot,
+      hasPlotData: !!props.plotData,
+      plotDataLength: props.plotData?.length
+    })
     return
   }
   

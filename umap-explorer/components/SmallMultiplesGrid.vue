@@ -1,5 +1,5 @@
 <template>
-  <div class="small-multiples-grid">
+  <div class="small-multiples-grid" :style="{ '--grid-cols': plotSize.cols }">
     <div 
       v-for="paramSet in parameterSets" 
       :key="paramSet.id"
@@ -14,8 +14,8 @@
       
       <ClientOnlyPlot
         :plot-data="paramSet.data"
-        :width="plotSize"
-        :height="plotSize"
+        :width="plotSize.size"
+        :height="plotSize.size"
         :color-scheme="colorScheme"
         :interactive="false"
         :point-size="2"
@@ -36,21 +36,32 @@ const props = defineProps({
 const emit = defineEmits(['plot-click'])
 
 const plotSize = computed(() => {
-  const gridCols = Math.ceil(Math.sqrt(props.parameterSets.length))
-  return Math.min(350, (window.innerWidth - 100) / gridCols)
+  const plotCount = props.parameterSets.length
+  
+  // Determine optimal grid layout
+  let gridCols = 3
+  if (plotCount > 36) gridCols = 8      // 8x8 = 64 plots
+  else if (plotCount > 16) gridCols = 6  // 6x6 = 36 plots  
+  else if (plotCount > 9) gridCols = 4   // 4x4 = 16 plots
+  
+  const containerWidth = window.innerWidth - 64
+  const spacing = 12
+  const plotSize = Math.max(80, Math.floor((containerWidth - (spacing * (gridCols + 1))) / gridCols))
+  
+  return { size: plotSize, cols: gridCols }
 })
 </script>
 
 <style scoped>
 .small-multiples-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  padding: 32px;
+  grid-template-columns: repeat(var(--grid-cols, 3), 1fr);
+  gap: 12px;
+  padding: 24px;
   height: calc(100vh - 100px);
   overflow-y: auto;
   place-items: center;
-  align-content: center;
+  align-content: start;
 }
 
 .plot-container {
@@ -59,7 +70,7 @@ const plotSize = computed(() => {
   transition: all 0.3s ease;
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 200px;
   aspect-ratio: 1;
   display: flex;
   flex-direction: column;

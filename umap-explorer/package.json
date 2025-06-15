@@ -10,6 +10,15 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@luma.gl/core": "^9.1.9",
+    "@luma.gl/engine": "^9.1.9",
+    "@luma.gl/shadertools": "^9.1.9",
+    "@luma.gl/webgl": "^9.1.9",
+    "@luma.gl/webgpu": "^9.1.9",
+    "d3-ease": "^3.0.1",
+    "d3-interpolate": "^3.0.1",
+    "d3-scale": "^4.0.2",
+    "d3-scale-chromatic": "^3.1.0",
     "nuxt": "^3.17.5",
     "regl-scatterplot": "^1.14.1",
     "vue": "^3.5.16",

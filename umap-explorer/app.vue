@@ -8,20 +8,33 @@
         :class="{ active: currentView === 'explorer' }"
         class="toggle-btn"
       >
-        SINGLE VIEW
+        SINGLE 2D
+      </button>
+      <button 
+        @click="currentView = '3d'" 
+        :class="{ active: currentView === '3d' }"
+        class="toggle-btn"
+      >
+        SINGLE 3D
       </button>
       <button 
         @click="currentView = 'grid'" 
         :class="{ active: currentView === 'grid' }"
         class="toggle-btn"
       >
-        PARAMETER SURF
+        GRID 64
       </button>
     </div>
     
     <SingleView 
       v-if="currentView === 'explorer' && umapData.results?.length" 
       :umap-data="umapData" 
+    />
+    
+    <SingleView3D 
+      v-else-if="currentView === '3d' && umapData.results?.length"
+      :umap-data="umapData"
+      @close="currentView = 'grid'"
     />
     
     <UMAPExplorer 
@@ -37,6 +50,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import SingleView from './components/SingleView.vue'
+import SingleView3D from './components/SingleView3D.vue'
 import UMAPExplorer from './components/UMAPExplorer.vue'
 
 const umapData = ref({ results: [], totalSamples: 0 })

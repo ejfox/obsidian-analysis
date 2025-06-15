@@ -1,226 +1,229 @@
-import fs from 'fs';
-import path from 'path';
+import chalk from 'chalk';
 
-class SimpleModularityDetector {
-    constructor() {
-        this.k = 10; // Number of clusters
-    }
+/**
+ * Simple modularity system for handling expanded UMAP parameter spaces
+ * Provides smart navigation and interpolation between parameter combinations
+ */
 
-    // Simple K-means clustering implementation
-    kmeans(data, k, maxIterations = 100) {
-        const n = data.length;
-        const d = data[0].length;
-        
-        // Initialize centroids randomly
-        let centroids = [];
-        for (let i = 0; i < k; i++) {
-            const centroid = [];
-            for (let j = 0; j < d; j++) {
-                centroid.push(Math.random() * 2 - 1); // Random values between -1 and 1
-            }
-            centroids.push(centroid);
-        }
-        
-        let assignments = new Array(n).fill(0);
-        
-        for (let iter = 0; iter < maxIterations; iter++) {
-            // Assign points to nearest centroid
-            let changed = false;
-            for (let i = 0; i < n; i++) {
-                let bestDist = Infinity;
-                let bestCluster = 0;
-                
-                for (let j = 0; j < k; j++) {
-                    const dist = this.cosineDistance(data[i], centroids[j]);
-                    if (dist < bestDist) {
-                        bestDist = dist;
-                        bestCluster = j;
-                    }
-                }
-                
-                if (assignments[i] !== bestCluster) {
-                    assignments[i] = bestCluster;
-                    changed = true;
-                }
-            }
-            
-            if (!changed) break;
-            
-            // Update centroids
-            const clusterSums = new Array(k).fill(null).map(() => new Array(d).fill(0));
-            const clusterCounts = new Array(k).fill(0);
-            
-            for (let i = 0; i < n; i++) {
-                const cluster = assignments[i];
-                clusterCounts[cluster]++;
-                for (let j = 0; j < d; j++) {
-                    clusterSums[cluster][j] += data[i][j];
-                }
-            }
-            
-            for (let i = 0; i < k; i++) {
-                if (clusterCounts[i] > 0) {
-                    for (let j = 0; j < d; j++) {
-                        centroids[i][j] = clusterSums[i][j] / clusterCounts[i];
-                    }
-                }
-            }
-        }
-        
-        return assignments;
+export class UMAPParameterModulator {
+  constructor(parameterSurfData) {
+    this.data = parameterSurfData;
+    this.results = parameterSurfData.results;
+    this.parameterSpace = parameterSurfData.parameterSpace;
+    
+    // Build parameter indices for fast lookup
+    this.parameterIndex = new Map();
+    this.results.forEach((result, idx) => {
+      const key = this.getParameterKey(result.parameters);
+      this.parameterIndex.set(key, idx);
+    });
+    
+    // Current state
+    this.currentIndex = 0;
+    this.interpolationCache = new Map();
+  }
+  
+  getParameterKey(params) {
+    return `${params.n_neighbors}_${params.min_dist}_${params.metric}`;
+  }
+  
+  /**
+   * Find the nearest parameter combinations for smooth transitions
+   */
+  findNearestNeighbors(targetParams, count = 4) {
+    const distances = this.results.map((result, idx) => {
+      const params = result.parameters;
+      
+      // Weighted distance calculation
+      const nDist = Math.abs(params.n_neighbors - targetParams.n_neighbors) / 100;
+      const dDist = Math.abs(params.min_dist - targetParams.min_dist);
+      const mDist = params.metric === targetParams.metric ? 0 : 1;
+      
+      // Weights favor min_dist changes for visual continuity
+      const distance = nDist * 0.3 + dDist * 0.5 + mDist * 0.2;
+      
+      return { idx, distance, params };
+    });
+    
+    distances.sort((a, b) => a.distance - b.distance);
+    return distances.slice(0, count);
+  }
+  
+  /**
+   * Interpolate between parameter combinations for smooth transitions
+   */
+  interpolateEmbeddings(fromIdx, toIdx, t) {
+    const cacheKey = `${fromIdx}_${toIdx}_${t.toFixed(2)}`;
+    
+    if (this.interpolationCache.has(cacheKey)) {
+      return this.interpolationCache.get(cacheKey);
     }
     
-    cosineDistance(a, b) {
-        let dotProduct = 0;
-        let normA = 0;
-        let normB = 0;
-        
-        for (let i = 0; i < a.length; i++) {
-            dotProduct += a[i] * b[i];
-            normA += a[i] * a[i];
-            normB += b[i] * b[i];
-        }
-        
-        normA = Math.sqrt(normA);
-        normB = Math.sqrt(normB);
-        
-        if (normA === 0 || normB === 0) return 1;
-        
-        const similarity = dotProduct / (normA * normB);
-        return 1 - similarity; // Convert similarity to distance
+    const fromData = this.results[fromIdx].data;
+    const toData = this.results[toIdx].data;
+    
+    // Simple linear interpolation of positions
+    const interpolated = fromData.map((point, idx) => {
+      const toPoint = toData[idx];
+      return {
+        ...point,
+        x: point.x + (toPoint.x - point.x) * t,
+        y: point.y + (toPoint.y - point.y) * t,
+        // Keep metadata from source
+        _interpolated: true,
+        _t: t
+      };
+    });
+    
+    // Cache for performance
+    this.interpolationCache.set(cacheKey, interpolated);
+    
+    return interpolated;
+  }
+  
+  /**
+   * Get parameter combination by various methods
+   */
+  getByParameters(n_neighbors, min_dist, metric = 'cosine') {
+    const key = this.getParameterKey({ n_neighbors, min_dist, metric });
+    const idx = this.parameterIndex.get(key);
+    
+    if (idx !== undefined) {
+      return this.results[idx];
     }
     
-    // Calculate pseudo-modularity based on within-cluster vs between-cluster distances
-    calculateModularity(data, assignments) {
-        const k = Math.max(...assignments) + 1;
-        let withinClusterDist = 0;
-        let betweenClusterDist = 0;
-        let withinCount = 0;
-        let betweenCount = 0;
-        
-        for (let i = 0; i < data.length; i++) {
-            for (let j = i + 1; j < data.length; j++) {
-                const dist = this.cosineDistance(data[i], data[j]);
-                
-                if (assignments[i] === assignments[j]) {
-                    withinClusterDist += dist;
-                    withinCount++;
-                } else {
-                    betweenClusterDist += dist;
-                    betweenCount++;
-                }
-            }
-        }
-        
-        const avgWithin = withinCount > 0 ? withinClusterDist / withinCount : 0;
-        const avgBetween = betweenCount > 0 ? betweenClusterDist / betweenCount : 1;
-        
-        // Pseudo-modularity: ratio of between-cluster to within-cluster distance
-        const modularity = avgBetween / (avgWithin + avgBetween);
-        
-        return modularity;
+    // Find nearest if exact match not found
+    const nearest = this.findNearestNeighbors({ n_neighbors, min_dist, metric }, 1)[0];
+    console.log(chalk.yellow(`⚠️  Exact match not found, using nearest: ${JSON.stringify(nearest.params)}`));
+    return this.results[nearest.idx];
+  }
+  
+  /**
+   * Navigate parameter space with smooth transitions
+   */
+  navigateToParameters(targetParams, steps = 10) {
+    const currentParams = this.results[this.currentIndex].parameters;
+    const targetKey = this.getParameterKey(targetParams);
+    const targetIdx = this.parameterIndex.get(targetKey);
+    
+    if (targetIdx === undefined) {
+      console.log(chalk.red('❌ Target parameters not found in grid'));
+      return null;
     }
     
-    addCommunityColors(embeddings, assignments) {
-        const uniqueCommunities = [...new Set(assignments)];
-        const communityToColor = {};
-        
-        uniqueCommunities.forEach((comm, i) => {
-            // Spread colors across [0, 1] range for maximum separation
-            communityToColor[comm] = uniqueCommunities.length > 1 ? 
-                i / (uniqueCommunities.length - 1) : 
-                Math.random(); // Random color if only one community
-        });
-        
-        return embeddings.map((item, index) => ({
-            ...item,
-            community: assignments[index],
-            communityColor: communityToColor[assignments[index]],
-            communitySize: assignments.filter(a => a === assignments[index]).length
-        }));
+    // Generate transition path
+    const path = [];
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps;
+      const interpolated = this.interpolateEmbeddings(this.currentIndex, targetIdx, t);
+      
+      path.push({
+        t,
+        data: interpolated,
+        fromParams: currentParams,
+        toParams: targetParams,
+        step: i
+      });
     }
     
-    async processExistingData() {
-        console.log('🔍 Processing existing UMAP data with simple modularity detection...');
-        
-        // Load existing UMAP parameter surfing data
-        const dataPath = '/Users/ejfox/code/obsidian-analysis/exports/umap_parameter_surf_2025-06-13T14:19:30.json';
-        const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
-        
-        console.log(`📊 Loaded ${data.results.length} parameter combinations with ${data.totalSamples} samples`);
-        
-        // Extract embeddings from the first parameter set for community detection
-        const baseData = data.results[0].data;
-        const embeddings = baseData.map(item => {
-            // Create a simple feature vector from available metadata
-            return [
-                item.folderDepth || 0,
-                item.wordCount / 1000, // Normalize word count
-                item.relativePosition || 0.5,
-                item.hasCode ? 1 : 0,
-                item.hasLinks ? 1 : 0,
-                item.hasTags ? 1 : 0,
-                // Add position features
-                item.x || 0,
-                item.y || 0
-            ];
-        });
-        
-        console.log('🔢 Running K-means clustering...');
-        const assignments = this.kmeans(embeddings, this.k);
-        const modularity = this.calculateModularity(embeddings, assignments);
-        
-        console.log(`✅ Clustering complete: ${this.k} communities, pseudo-modularity: ${modularity.toFixed(4)}`);
-        
-        // Add community information to all parameter sets
-        const enhancedResults = data.results.map(result => ({
-            ...result,
-            data: this.addCommunityColors(result.data, assignments),
-            metadata: {
-                ...result.metadata,
-                communityStats: {
-                    algorithm: 'kmeans_simple',
-                    modularity: modularity,
-                    n_communities: this.k,
-                    community_sizes: this.k
-                }
-            }
-        }));
-        
-        // Create enhanced output
-        const outputData = {
-            ...data,
-            results: enhancedResults,
-            communityDetection: {
-                algorithm: 'kmeans_simple',
-                modularity: modularity,
-                n_communities: this.k,
-                timestamp: new Date().toISOString()
-            }
-        };
-        
-        // Save enhanced data
-        const outputPath = '/Users/ejfox/code/obsidian-analysis/umap-explorer/public/umap_parameter_surf_with_communities.json';
-        fs.writeFileSync(outputPath, JSON.stringify(outputData, null, 2));
-        
-        console.log(`🎉 Enhanced UMAP data saved to: ${outputPath}`);
-        console.log(`📊 Community Detection Results:`);
-        console.log(`   Algorithm: kmeans_simple`);
-        console.log(`   Communities: ${this.k}`);
-        console.log(`   Pseudo-modularity: ${modularity.toFixed(4)}`);
-        
-        return outputData;
-    }
+    this.currentIndex = targetIdx;
+    return path;
+  }
+  
+  /**
+   * Get suggested parameter exploration paths
+   */
+  getSuggestedPaths() {
+    return [
+      {
+        name: 'Local to Global Structure',
+        description: 'Transition from tight clusters to global overview',
+        path: [
+          { n_neighbors: 3, min_dist: 0.0, metric: 'cosine' },
+          { n_neighbors: 8, min_dist: 0.05, metric: 'cosine' },
+          { n_neighbors: 15, min_dist: 0.1, metric: 'cosine' },
+          { n_neighbors: 30, min_dist: 0.3, metric: 'cosine' },
+          { n_neighbors: 50, min_dist: 0.5, metric: 'cosine' },
+          { n_neighbors: 100, min_dist: 0.5, metric: 'cosine' }
+        ]
+      },
+      {
+        name: 'Distance Metric Comparison',
+        description: 'Compare different distance metrics at same parameters',
+        path: [
+          { n_neighbors: 30, min_dist: 0.1, metric: 'cosine' },
+          { n_neighbors: 30, min_dist: 0.1, metric: 'euclidean' },
+          { n_neighbors: 30, min_dist: 0.1, metric: 'manhattan' },
+          { n_neighbors: 30, min_dist: 0.1, metric: 'cosine' }
+        ]
+      },
+      {
+        name: 'Density Exploration',
+        description: 'Vary min_dist to control point spread',
+        path: [
+          { n_neighbors: 20, min_dist: 0.0, metric: 'cosine' },
+          { n_neighbors: 20, min_dist: 0.1, metric: 'cosine' },
+          { n_neighbors: 20, min_dist: 0.2, metric: 'cosine' },
+          { n_neighbors: 20, min_dist: 0.3, metric: 'cosine' },
+          { n_neighbors: 20, min_dist: 0.5, metric: 'cosine' }
+        ]
+      }
+    ];
+  }
+  
+  /**
+   * Get parameter statistics
+   */
+  getParameterStats() {
+    const stats = {
+      totalCombinations: this.results.length,
+      mode: this.data.mode,
+      parameterRanges: {
+        n_neighbors: {
+          min: Math.min(...this.parameterSpace.n_neighbors),
+          max: Math.max(...this.parameterSpace.n_neighbors),
+          values: this.parameterSpace.n_neighbors
+        },
+        min_dist: {
+          min: Math.min(...this.parameterSpace.min_dist),
+          max: Math.max(...this.parameterSpace.min_dist),
+          values: this.parameterSpace.min_dist
+        },
+        metrics: this.parameterSpace.metrics
+      },
+      computeTimes: {
+        total: this.results.reduce((sum, r) => sum + r.metadata.computeTime, 0),
+        average: this.results.reduce((sum, r) => sum + r.metadata.computeTime, 0) / this.results.length,
+        min: Math.min(...this.results.map(r => r.metadata.computeTime)),
+        max: Math.max(...this.results.map(r => r.metadata.computeTime))
+      }
+    };
+    
+    return stats;
+  }
 }
 
-// Main execution
-async function main() {
-    const detector = new SimpleModularityDetector();
-    await detector.processExistingData();
+/**
+ * Load and initialize UMAP parameter surf data
+ */
+export async function loadUMAPParameterSurf(filePath) {
+  try {
+    const fs = await import('fs');
+    const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    
+    console.log(chalk.green(`✅ Loaded UMAP parameter surf with ${data.results.length} combinations`));
+    console.log(chalk.blue(`   Mode: ${data.mode}`));
+    console.log(chalk.blue(`   Samples: ${data.totalSamples}`));
+    
+    return new UMAPParameterModulator(data);
+  } catch (error) {
+    console.error(chalk.red('❌ Failed to load UMAP parameter surf data:'), error);
+    throw error;
+  }
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
-    main().catch(console.error);
-}
-
-export default SimpleModularityDetector;
+// Export for use in Vue components
+export default {
+  UMAPParameterModulator,
+  loadUMAPParameterSurf
+};
