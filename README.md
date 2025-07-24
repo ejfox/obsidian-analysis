@@ -91,6 +91,12 @@ Create UMAP visualization:
 python umap_example.py --input ../exports/embeddings_2024-*
 ```
 
+**Advanced UMAP Exploration**: Generate and compare 64 different UMAP parameter combinations:
+```bash
+python src/generate-64-umap-combinations.py
+```
+Then explore results in the interactive web interface at `umap-explorer/`.
+
 Create t-SNE visualization:
 ```bash
 python tsne_example.py --input ../exports/embeddings_2024-*

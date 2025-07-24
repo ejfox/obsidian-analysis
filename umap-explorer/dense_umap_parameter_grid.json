@@ -1,0 +1,3479 @@
+{
+  "timestamp": "2025-06-15T01:22:51.819Z",
+  "totalCombinations": 286,
+  "parameterRanges": {
+    "n_neighbors": [
+      2,
+      3,
+      5,
+      8,
+      10,
+      15,
+      20,
+      25,
+      30,
+      40,
+      50,
+      75,
+      100
+    ],
+    "min_dist": [
+      0,
+      0.025,
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.75,
+      1
+    ],
+    "metric": [
+      "cosine",
+      "euclidean"
+    ]
+  },
+  "categories": {
+    "local_tight": 24,
+    "local_loose": 42,
+    "balanced": 110,
+    "global_tight": 40,
+    "global_loose": 70
+  },
+  "combinations": [
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, cosine distance",
+        "parameterString": "n2_d0_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, euclidean distance",
+        "parameterString": "n2_d0_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.025,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, cosine distance",
+        "parameterString": "n2_d0.025_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.025,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, euclidean distance",
+        "parameterString": "n2_d0.025_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.05,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, cosine distance",
+        "parameterString": "n2_d0.05_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.05,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, euclidean distance",
+        "parameterString": "n2_d0.05_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, tight clusters, cosine distance",
+        "parameterString": "n2_d0.1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, tight clusters, euclidean distance",
+        "parameterString": "n2_d0.1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.15,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, tight clusters, cosine distance",
+        "parameterString": "n2_d0.15_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.15,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, tight clusters, euclidean distance",
+        "parameterString": "n2_d0.15_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.2,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, tight clusters, cosine distance",
+        "parameterString": "n2_d0.2_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.2,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, tight clusters, euclidean distance",
+        "parameterString": "n2_d0.2_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.3,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, cosine distance",
+        "parameterString": "n2_d0.3_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.3,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, euclidean distance",
+        "parameterString": "n2_d0.3_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.4,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, cosine distance",
+        "parameterString": "n2_d0.4_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.4,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, euclidean distance",
+        "parameterString": "n2_d0.4_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.5,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, cosine distance",
+        "parameterString": "n2_d0.5_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.5,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, euclidean distance",
+        "parameterString": "n2_d0.5_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.75,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, loose clusters, cosine distance",
+        "parameterString": "n2_d0.75_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 0.75,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, loose clusters, euclidean distance",
+        "parameterString": "n2_d0.75_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, loose clusters, cosine distance",
+        "parameterString": "n2_d1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 2,
+        "min_dist": 1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, loose clusters, euclidean distance",
+        "parameterString": "n2_d1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, cosine distance",
+        "parameterString": "n3_d0_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, euclidean distance",
+        "parameterString": "n3_d0_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.025,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, cosine distance",
+        "parameterString": "n3_d0.025_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.025,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, euclidean distance",
+        "parameterString": "n3_d0.025_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.05,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, cosine distance",
+        "parameterString": "n3_d0.05_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.05,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, euclidean distance",
+        "parameterString": "n3_d0.05_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, tight clusters, cosine distance",
+        "parameterString": "n3_d0.1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, tight clusters, euclidean distance",
+        "parameterString": "n3_d0.1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.15,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, tight clusters, cosine distance",
+        "parameterString": "n3_d0.15_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.15,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, tight clusters, euclidean distance",
+        "parameterString": "n3_d0.15_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.2,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, tight clusters, cosine distance",
+        "parameterString": "n3_d0.2_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.2,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, tight clusters, euclidean distance",
+        "parameterString": "n3_d0.2_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.3,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, cosine distance",
+        "parameterString": "n3_d0.3_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.3,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, euclidean distance",
+        "parameterString": "n3_d0.3_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.4,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, cosine distance",
+        "parameterString": "n3_d0.4_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.4,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, euclidean distance",
+        "parameterString": "n3_d0.4_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.5,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, cosine distance",
+        "parameterString": "n3_d0.5_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.5,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, euclidean distance",
+        "parameterString": "n3_d0.5_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.75,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, loose clusters, cosine distance",
+        "parameterString": "n3_d0.75_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 0.75,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, loose clusters, euclidean distance",
+        "parameterString": "n3_d0.75_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, loose clusters, cosine distance",
+        "parameterString": "n3_d1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 3,
+        "min_dist": 1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, loose clusters, euclidean distance",
+        "parameterString": "n3_d1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, cosine distance",
+        "parameterString": "n5_d0_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, euclidean distance",
+        "parameterString": "n5_d0_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.025,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, cosine distance",
+        "parameterString": "n5_d0.025_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.025,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, euclidean distance",
+        "parameterString": "n5_d0.025_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.05,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, cosine distance",
+        "parameterString": "n5_d0.05_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.05,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, very tight clusters, euclidean distance",
+        "parameterString": "n5_d0.05_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, tight clusters, cosine distance",
+        "parameterString": "n5_d0.1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_tight",
+        "description": "very local view, tight clusters, euclidean distance",
+        "parameterString": "n5_d0.1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.15,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, tight clusters, cosine distance",
+        "parameterString": "n5_d0.15_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.15,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, tight clusters, euclidean distance",
+        "parameterString": "n5_d0.15_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.2,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, tight clusters, cosine distance",
+        "parameterString": "n5_d0.2_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.2,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, tight clusters, euclidean distance",
+        "parameterString": "n5_d0.2_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.3,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, cosine distance",
+        "parameterString": "n5_d0.3_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.3,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, euclidean distance",
+        "parameterString": "n5_d0.3_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.4,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, cosine distance",
+        "parameterString": "n5_d0.4_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.4,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, euclidean distance",
+        "parameterString": "n5_d0.4_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.5,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, cosine distance",
+        "parameterString": "n5_d0.5_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.5,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, moderate clusters, euclidean distance",
+        "parameterString": "n5_d0.5_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.75,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, loose clusters, cosine distance",
+        "parameterString": "n5_d0.75_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 0.75,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, loose clusters, euclidean distance",
+        "parameterString": "n5_d0.75_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, loose clusters, cosine distance",
+        "parameterString": "n5_d1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 5,
+        "min_dist": 1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "local_loose",
+        "description": "very local view, loose clusters, euclidean distance",
+        "parameterString": "n5_d1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, cosine distance",
+        "parameterString": "n8_d0_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, euclidean distance",
+        "parameterString": "n8_d0_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.025,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, cosine distance",
+        "parameterString": "n8_d0.025_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.025,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, euclidean distance",
+        "parameterString": "n8_d0.025_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.05,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, cosine distance",
+        "parameterString": "n8_d0.05_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.05,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, euclidean distance",
+        "parameterString": "n8_d0.05_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, cosine distance",
+        "parameterString": "n8_d0.1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, euclidean distance",
+        "parameterString": "n8_d0.1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.15,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, cosine distance",
+        "parameterString": "n8_d0.15_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.15,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, euclidean distance",
+        "parameterString": "n8_d0.15_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.2,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, cosine distance",
+        "parameterString": "n8_d0.2_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.2,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, euclidean distance",
+        "parameterString": "n8_d0.2_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.3,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, cosine distance",
+        "parameterString": "n8_d0.3_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.3,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, euclidean distance",
+        "parameterString": "n8_d0.3_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.4,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, cosine distance",
+        "parameterString": "n8_d0.4_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.4,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, euclidean distance",
+        "parameterString": "n8_d0.4_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.5,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, cosine distance",
+        "parameterString": "n8_d0.5_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.5,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, euclidean distance",
+        "parameterString": "n8_d0.5_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.75,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, loose clusters, cosine distance",
+        "parameterString": "n8_d0.75_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 0.75,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, loose clusters, euclidean distance",
+        "parameterString": "n8_d0.75_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, loose clusters, cosine distance",
+        "parameterString": "n8_d1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 8,
+        "min_dist": 1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, loose clusters, euclidean distance",
+        "parameterString": "n8_d1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, cosine distance",
+        "parameterString": "n10_d0_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, euclidean distance",
+        "parameterString": "n10_d0_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.025,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, cosine distance",
+        "parameterString": "n10_d0.025_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.025,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, euclidean distance",
+        "parameterString": "n10_d0.025_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.05,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, cosine distance",
+        "parameterString": "n10_d0.05_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.05,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, euclidean distance",
+        "parameterString": "n10_d0.05_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, cosine distance",
+        "parameterString": "n10_d0.1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, euclidean distance",
+        "parameterString": "n10_d0.1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.15,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, cosine distance",
+        "parameterString": "n10_d0.15_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.15,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, euclidean distance",
+        "parameterString": "n10_d0.15_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.2,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, cosine distance",
+        "parameterString": "n10_d0.2_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.2,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, euclidean distance",
+        "parameterString": "n10_d0.2_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.3,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, cosine distance",
+        "parameterString": "n10_d0.3_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.3,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, euclidean distance",
+        "parameterString": "n10_d0.3_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.4,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, cosine distance",
+        "parameterString": "n10_d0.4_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.4,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, euclidean distance",
+        "parameterString": "n10_d0.4_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.5,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, cosine distance",
+        "parameterString": "n10_d0.5_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.5,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, euclidean distance",
+        "parameterString": "n10_d0.5_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.75,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, loose clusters, cosine distance",
+        "parameterString": "n10_d0.75_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 0.75,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, loose clusters, euclidean distance",
+        "parameterString": "n10_d0.75_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, loose clusters, cosine distance",
+        "parameterString": "n10_d1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 10,
+        "min_dist": 1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, loose clusters, euclidean distance",
+        "parameterString": "n10_d1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, cosine distance",
+        "parameterString": "n15_d0_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, euclidean distance",
+        "parameterString": "n15_d0_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.025,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, cosine distance",
+        "parameterString": "n15_d0.025_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.025,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, euclidean distance",
+        "parameterString": "n15_d0.025_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.05,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, cosine distance",
+        "parameterString": "n15_d0.05_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.05,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, very tight clusters, euclidean distance",
+        "parameterString": "n15_d0.05_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, cosine distance",
+        "parameterString": "n15_d0.1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, euclidean distance",
+        "parameterString": "n15_d0.1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.15,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, cosine distance",
+        "parameterString": "n15_d0.15_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.15,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, euclidean distance",
+        "parameterString": "n15_d0.15_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.2,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, cosine distance",
+        "parameterString": "n15_d0.2_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.2,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, tight clusters, euclidean distance",
+        "parameterString": "n15_d0.2_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.3,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, cosine distance",
+        "parameterString": "n15_d0.3_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.3,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, euclidean distance",
+        "parameterString": "n15_d0.3_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.4,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, cosine distance",
+        "parameterString": "n15_d0.4_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.4,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, euclidean distance",
+        "parameterString": "n15_d0.4_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.5,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, cosine distance",
+        "parameterString": "n15_d0.5_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.5,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, moderate clusters, euclidean distance",
+        "parameterString": "n15_d0.5_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.75,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, loose clusters, cosine distance",
+        "parameterString": "n15_d0.75_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 0.75,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, loose clusters, euclidean distance",
+        "parameterString": "n15_d0.75_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, loose clusters, cosine distance",
+        "parameterString": "n15_d1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 15,
+        "min_dist": 1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "local view, loose clusters, euclidean distance",
+        "parameterString": "n15_d1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, very tight clusters, cosine distance",
+        "parameterString": "n20_d0_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, very tight clusters, euclidean distance",
+        "parameterString": "n20_d0_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.025,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, very tight clusters, cosine distance",
+        "parameterString": "n20_d0.025_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.025,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, very tight clusters, euclidean distance",
+        "parameterString": "n20_d0.025_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.05,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, very tight clusters, cosine distance",
+        "parameterString": "n20_d0.05_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.05,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, very tight clusters, euclidean distance",
+        "parameterString": "n20_d0.05_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, tight clusters, cosine distance",
+        "parameterString": "n20_d0.1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, tight clusters, euclidean distance",
+        "parameterString": "n20_d0.1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.15,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, tight clusters, cosine distance",
+        "parameterString": "n20_d0.15_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.15,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, tight clusters, euclidean distance",
+        "parameterString": "n20_d0.15_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.2,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, tight clusters, cosine distance",
+        "parameterString": "n20_d0.2_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.2,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, tight clusters, euclidean distance",
+        "parameterString": "n20_d0.2_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.3,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, moderate clusters, cosine distance",
+        "parameterString": "n20_d0.3_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.3,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, moderate clusters, euclidean distance",
+        "parameterString": "n20_d0.3_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.4,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, moderate clusters, cosine distance",
+        "parameterString": "n20_d0.4_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.4,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, moderate clusters, euclidean distance",
+        "parameterString": "n20_d0.4_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.5,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, moderate clusters, cosine distance",
+        "parameterString": "n20_d0.5_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.5,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, moderate clusters, euclidean distance",
+        "parameterString": "n20_d0.5_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.75,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, loose clusters, cosine distance",
+        "parameterString": "n20_d0.75_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 0.75,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, loose clusters, euclidean distance",
+        "parameterString": "n20_d0.75_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, loose clusters, cosine distance",
+        "parameterString": "n20_d1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 20,
+        "min_dist": 1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, loose clusters, euclidean distance",
+        "parameterString": "n20_d1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, very tight clusters, cosine distance",
+        "parameterString": "n25_d0_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, very tight clusters, euclidean distance",
+        "parameterString": "n25_d0_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.025,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, very tight clusters, cosine distance",
+        "parameterString": "n25_d0.025_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.025,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, very tight clusters, euclidean distance",
+        "parameterString": "n25_d0.025_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.05,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, very tight clusters, cosine distance",
+        "parameterString": "n25_d0.05_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.05,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, very tight clusters, euclidean distance",
+        "parameterString": "n25_d0.05_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, tight clusters, cosine distance",
+        "parameterString": "n25_d0.1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, tight clusters, euclidean distance",
+        "parameterString": "n25_d0.1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.15,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, tight clusters, cosine distance",
+        "parameterString": "n25_d0.15_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.15,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, tight clusters, euclidean distance",
+        "parameterString": "n25_d0.15_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.2,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, tight clusters, cosine distance",
+        "parameterString": "n25_d0.2_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.2,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, tight clusters, euclidean distance",
+        "parameterString": "n25_d0.2_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.3,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, moderate clusters, cosine distance",
+        "parameterString": "n25_d0.3_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.3,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, moderate clusters, euclidean distance",
+        "parameterString": "n25_d0.3_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.4,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, moderate clusters, cosine distance",
+        "parameterString": "n25_d0.4_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.4,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, moderate clusters, euclidean distance",
+        "parameterString": "n25_d0.4_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.5,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, moderate clusters, cosine distance",
+        "parameterString": "n25_d0.5_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.5,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, moderate clusters, euclidean distance",
+        "parameterString": "n25_d0.5_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.75,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, loose clusters, cosine distance",
+        "parameterString": "n25_d0.75_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 0.75,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, loose clusters, euclidean distance",
+        "parameterString": "n25_d0.75_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, loose clusters, cosine distance",
+        "parameterString": "n25_d1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 25,
+        "min_dist": 1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "balanced",
+        "description": "balanced view, loose clusters, euclidean distance",
+        "parameterString": "n25_d1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "balanced view, very tight clusters, cosine distance",
+        "parameterString": "n30_d0_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "balanced view, very tight clusters, euclidean distance",
+        "parameterString": "n30_d0_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.025,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "balanced view, very tight clusters, cosine distance",
+        "parameterString": "n30_d0.025_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.025,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "balanced view, very tight clusters, euclidean distance",
+        "parameterString": "n30_d0.025_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.05,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "balanced view, very tight clusters, cosine distance",
+        "parameterString": "n30_d0.05_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.05,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "balanced view, very tight clusters, euclidean distance",
+        "parameterString": "n30_d0.05_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "balanced view, tight clusters, cosine distance",
+        "parameterString": "n30_d0.1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "balanced view, tight clusters, euclidean distance",
+        "parameterString": "n30_d0.1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.15,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "balanced view, tight clusters, cosine distance",
+        "parameterString": "n30_d0.15_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.15,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "balanced view, tight clusters, euclidean distance",
+        "parameterString": "n30_d0.15_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.2,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "balanced view, tight clusters, cosine distance",
+        "parameterString": "n30_d0.2_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.2,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "balanced view, tight clusters, euclidean distance",
+        "parameterString": "n30_d0.2_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.3,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "balanced view, moderate clusters, cosine distance",
+        "parameterString": "n30_d0.3_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.3,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "balanced view, moderate clusters, euclidean distance",
+        "parameterString": "n30_d0.3_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.4,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "balanced view, moderate clusters, cosine distance",
+        "parameterString": "n30_d0.4_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.4,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "balanced view, moderate clusters, euclidean distance",
+        "parameterString": "n30_d0.4_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.5,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "balanced view, moderate clusters, cosine distance",
+        "parameterString": "n30_d0.5_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.5,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "balanced view, moderate clusters, euclidean distance",
+        "parameterString": "n30_d0.5_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.75,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "balanced view, loose clusters, cosine distance",
+        "parameterString": "n30_d0.75_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 0.75,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "balanced view, loose clusters, euclidean distance",
+        "parameterString": "n30_d0.75_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "balanced view, loose clusters, cosine distance",
+        "parameterString": "n30_d1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 30,
+        "min_dist": 1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "balanced view, loose clusters, euclidean distance",
+        "parameterString": "n30_d1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, cosine distance",
+        "parameterString": "n40_d0_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, euclidean distance",
+        "parameterString": "n40_d0_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.025,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, cosine distance",
+        "parameterString": "n40_d0.025_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.025,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, euclidean distance",
+        "parameterString": "n40_d0.025_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.05,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, cosine distance",
+        "parameterString": "n40_d0.05_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.05,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, euclidean distance",
+        "parameterString": "n40_d0.05_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, tight clusters, cosine distance",
+        "parameterString": "n40_d0.1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, tight clusters, euclidean distance",
+        "parameterString": "n40_d0.1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.15,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, tight clusters, cosine distance",
+        "parameterString": "n40_d0.15_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.15,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, tight clusters, euclidean distance",
+        "parameterString": "n40_d0.15_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.2,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, tight clusters, cosine distance",
+        "parameterString": "n40_d0.2_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.2,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, tight clusters, euclidean distance",
+        "parameterString": "n40_d0.2_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.3,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, cosine distance",
+        "parameterString": "n40_d0.3_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.3,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, euclidean distance",
+        "parameterString": "n40_d0.3_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.4,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, cosine distance",
+        "parameterString": "n40_d0.4_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.4,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, euclidean distance",
+        "parameterString": "n40_d0.4_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.5,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, cosine distance",
+        "parameterString": "n40_d0.5_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.5,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, euclidean distance",
+        "parameterString": "n40_d0.5_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.75,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, loose clusters, cosine distance",
+        "parameterString": "n40_d0.75_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 0.75,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, loose clusters, euclidean distance",
+        "parameterString": "n40_d0.75_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, loose clusters, cosine distance",
+        "parameterString": "n40_d1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 40,
+        "min_dist": 1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, loose clusters, euclidean distance",
+        "parameterString": "n40_d1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, cosine distance",
+        "parameterString": "n50_d0_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, euclidean distance",
+        "parameterString": "n50_d0_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.025,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, cosine distance",
+        "parameterString": "n50_d0.025_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.025,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, euclidean distance",
+        "parameterString": "n50_d0.025_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.05,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, cosine distance",
+        "parameterString": "n50_d0.05_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.05,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, euclidean distance",
+        "parameterString": "n50_d0.05_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, tight clusters, cosine distance",
+        "parameterString": "n50_d0.1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, tight clusters, euclidean distance",
+        "parameterString": "n50_d0.1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.15,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, tight clusters, cosine distance",
+        "parameterString": "n50_d0.15_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.15,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, tight clusters, euclidean distance",
+        "parameterString": "n50_d0.15_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.2,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, tight clusters, cosine distance",
+        "parameterString": "n50_d0.2_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.2,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, tight clusters, euclidean distance",
+        "parameterString": "n50_d0.2_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.3,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, cosine distance",
+        "parameterString": "n50_d0.3_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.3,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, euclidean distance",
+        "parameterString": "n50_d0.3_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.4,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, cosine distance",
+        "parameterString": "n50_d0.4_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.4,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, euclidean distance",
+        "parameterString": "n50_d0.4_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.5,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, cosine distance",
+        "parameterString": "n50_d0.5_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.5,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, euclidean distance",
+        "parameterString": "n50_d0.5_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.75,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, loose clusters, cosine distance",
+        "parameterString": "n50_d0.75_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 0.75,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, loose clusters, euclidean distance",
+        "parameterString": "n50_d0.75_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, loose clusters, cosine distance",
+        "parameterString": "n50_d1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 50,
+        "min_dist": 1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, loose clusters, euclidean distance",
+        "parameterString": "n50_d1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, cosine distance",
+        "parameterString": "n75_d0_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, euclidean distance",
+        "parameterString": "n75_d0_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.025,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, cosine distance",
+        "parameterString": "n75_d0.025_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.025,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, euclidean distance",
+        "parameterString": "n75_d0.025_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.05,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, cosine distance",
+        "parameterString": "n75_d0.05_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.05,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, euclidean distance",
+        "parameterString": "n75_d0.05_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, tight clusters, cosine distance",
+        "parameterString": "n75_d0.1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, tight clusters, euclidean distance",
+        "parameterString": "n75_d0.1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.15,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, tight clusters, cosine distance",
+        "parameterString": "n75_d0.15_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.15,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, tight clusters, euclidean distance",
+        "parameterString": "n75_d0.15_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.2,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, tight clusters, cosine distance",
+        "parameterString": "n75_d0.2_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.2,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, tight clusters, euclidean distance",
+        "parameterString": "n75_d0.2_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.3,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, cosine distance",
+        "parameterString": "n75_d0.3_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.3,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, euclidean distance",
+        "parameterString": "n75_d0.3_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.4,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, cosine distance",
+        "parameterString": "n75_d0.4_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.4,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, euclidean distance",
+        "parameterString": "n75_d0.4_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.5,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, cosine distance",
+        "parameterString": "n75_d0.5_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.5,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, euclidean distance",
+        "parameterString": "n75_d0.5_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.75,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, loose clusters, cosine distance",
+        "parameterString": "n75_d0.75_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 0.75,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, loose clusters, euclidean distance",
+        "parameterString": "n75_d0.75_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, loose clusters, cosine distance",
+        "parameterString": "n75_d1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 75,
+        "min_dist": 1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, loose clusters, euclidean distance",
+        "parameterString": "n75_d1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, cosine distance",
+        "parameterString": "n100_d0_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, euclidean distance",
+        "parameterString": "n100_d0_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.025,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, cosine distance",
+        "parameterString": "n100_d0.025_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.025,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, euclidean distance",
+        "parameterString": "n100_d0.025_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.05,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, cosine distance",
+        "parameterString": "n100_d0.05_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.05,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, very tight clusters, euclidean distance",
+        "parameterString": "n100_d0.05_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, tight clusters, cosine distance",
+        "parameterString": "n100_d0.1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_tight",
+        "description": "global view, tight clusters, euclidean distance",
+        "parameterString": "n100_d0.1_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.15,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, tight clusters, cosine distance",
+        "parameterString": "n100_d0.15_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.15,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, tight clusters, euclidean distance",
+        "parameterString": "n100_d0.15_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.2,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, tight clusters, cosine distance",
+        "parameterString": "n100_d0.2_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.2,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, tight clusters, euclidean distance",
+        "parameterString": "n100_d0.2_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.3,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, cosine distance",
+        "parameterString": "n100_d0.3_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.3,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, euclidean distance",
+        "parameterString": "n100_d0.3_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.4,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, cosine distance",
+        "parameterString": "n100_d0.4_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.4,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, euclidean distance",
+        "parameterString": "n100_d0.4_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.5,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, cosine distance",
+        "parameterString": "n100_d0.5_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.5,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, moderate clusters, euclidean distance",
+        "parameterString": "n100_d0.5_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.75,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, loose clusters, cosine distance",
+        "parameterString": "n100_d0.75_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 0.75,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, loose clusters, euclidean distance",
+        "parameterString": "n100_d0.75_euclidean"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 1,
+        "metric": "cosine"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, loose clusters, cosine distance",
+        "parameterString": "n100_d1_cosine"
+      }
+    },
+    {
+      "parameters": {
+        "n_neighbors": 100,
+        "min_dist": 1,
+        "metric": "euclidean"
+      },
+      "metadata": {
+        "category": "global_loose",
+        "description": "global view, loose clusters, euclidean distance",
+        "parameterString": "n100_d1_euclidean"
+      }
+    }
+  ]
+}

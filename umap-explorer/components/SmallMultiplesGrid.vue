@@ -12,13 +12,13 @@
         <span class="param-label">{{ paramSet.params.metric }}</span>
       </div>
       
-      <ClientOnlyPlot
+      <Canvas2DPlot
         :plot-data="paramSet.data"
         :width="plotSize.size"
         :height="plotSize.size"
         :color-scheme="colorScheme"
-        :interactive="false"
-        :point-size="2"
+        :point-size="1"
+        @click="$emit('plot-click', paramSet)"
       />
     </div>
   </div>
@@ -26,7 +26,7 @@
 
 <script setup>
 import { computed } from 'vue'
-import ClientOnlyPlot from './ClientOnlyPlot.vue'
+import Canvas2DPlot from './Canvas2DPlot.vue'
 
 const props = defineProps({
   parameterSets: Array,

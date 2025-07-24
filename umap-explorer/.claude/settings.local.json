@@ -4,7 +4,10 @@
       "Bash(rg:*)",
       "Bash(mv:*)",
       "WebFetch(domain:github.com)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(sqlite3:*)"
     ],
     "deny": []
   }

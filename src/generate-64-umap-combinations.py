@@ -14,16 +14,18 @@ from datetime import datetime
 
 def load_embeddings_from_db():
     """Load embeddings from the SQLite database"""
-    db_path = Path(__file__).parent.parent / "obsidian_embeddings.db"
+    db_path = Path(__file__).parent.parent / "embeddings.db"
     
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     
-    # Get embeddings with metadata
+    # Get embeddings with metadata - join chunks and embeddings tables
     query = """
-    SELECT embedding, chunk_text, file_path, word_count, folder
-    FROM chunks 
-    WHERE embedding IS NOT NULL
+    SELECT e.embedding, e.chunk_text, n.file_path, c.word_count, n.folder_path
+    FROM embeddings e
+    JOIN chunks c ON e.note_id = c.note_id AND e.chunk_index = c.chunk_index
+    JOIN notes n ON e.note_id = n.id
+    WHERE e.embedding IS NOT NULL
     LIMIT 2000
     """
     
@@ -53,16 +55,18 @@ def load_embeddings_from_db():
     return np.array(embeddings), metadata
 
 def select_64_parameter_combinations():
-    """Select 64 interesting parameter combinations"""
+    """Select 64 improved parameter combinations for better semantic structure"""
     
-    # Based on research, create a diverse grid covering the parameter space
+    # Based on research, create parameters that preserve semantic continuity
     combinations = []
     
-    # n_neighbors: focus on key transition points
-    n_neighbors_values = [2, 3, 5, 8, 10, 12, 15, 20, 25, 30, 40, 50, 75, 100]
+    # n_neighbors: Start from 15 to capture more global structure
+    # Higher values preserve semantic relationships better
+    n_neighbors_values = [15, 20, 25, 30, 40, 50, 75, 100]
     
-    # min_dist: cover the full meaningful range  
-    min_dist_values = [0.0, 0.05, 0.1, 0.2, 0.3, 0.5, 0.75, 1.0]
+    # min_dist: Remove 0.0 which creates artificial tight clusters
+    # Start from 0.1 to allow natural spacing between points
+    min_dist_values = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1.0]
     
     # Create combinations focusing on interesting transitions
     for n in n_neighbors_values:
@@ -88,15 +92,17 @@ def select_64_parameter_combinations():
     return combinations
 
 def run_umap_with_params(embeddings, params):
-    """Run UMAP with specific parameters"""
+    """Run UMAP with specific parameters for better semantic structure"""
     try:
         reducer = umap.UMAP(
             n_neighbors=params['n_neighbors'],
             min_dist=params['min_dist'],
             metric=params['metric'],
             n_components=2,
+            spread=1.5,  # Add spread to prevent over-clustering
             random_state=42,
-            verbose=False
+            verbose=False,
+            low_memory=False  # Better quality at cost of memory
         )
         
         embedding_2d = reducer.fit_transform(embeddings)
@@ -106,10 +112,15 @@ def run_umap_with_params(embeddings, params):
         print(f"❌ UMAP failed for {params}: {e}")
         return None
 
-def detect_communities(embeddings_2d, n_clusters=10):
-    """Detect communities using K-means clustering"""
-    kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init=10)
-    community_labels = kmeans.fit_predict(embeddings_2d)
+def detect_communities(embeddings_high_dim, n_clusters=10):
+    """Detect communities using K-means clustering on high-dimensional embeddings"""
+    # Normalize embeddings for better clustering
+    from sklearn.preprocessing import normalize
+    embeddings_normalized = normalize(embeddings_high_dim, norm='l2')
+    
+    # Cluster on high-dimensional space for semantic communities
+    kmeans = KMeans(n_clusters=n_clusters, random_state=42, n_init=20, max_iter=300)
+    community_labels = kmeans.fit_predict(embeddings_normalized)
     
     # Convert to community colors (0-1 range)
     community_colors = community_labels / (n_clusters - 1)
@@ -142,6 +153,10 @@ def main():
     # Calculate relative positions once
     relative_positions = calculate_relative_positions(metadata)
     
+    # Detect communities once on high-dimensional embeddings (better semantic clustering)
+    print("🧠 Detecting semantic communities on high-dimensional embeddings...")
+    community_labels, community_colors = detect_communities(embeddings)
+    
     results = []
     
     for i, params in enumerate(param_combinations):
@@ -152,9 +167,6 @@ def main():
         
         if embedding_2d is None:
             continue
-            
-        # Detect communities
-        community_labels, community_colors = detect_communities(embedding_2d)
         
         # Prepare data points
         data_points = []
