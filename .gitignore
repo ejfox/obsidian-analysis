@@ -4,3 +4,9 @@ node_modules/
 .DS_Store
 .env
 embeddings.db
+
+# Large data files
+umap-explorer/public/*.json
+
+# Update embeddings.db from R2 or local source
+# Run update-embeddings.sh to regenerate
