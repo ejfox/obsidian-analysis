@@ -7,6 +7,7 @@ embeddings.db
 
 # Large data files
 umap-explorer/public/*.json
+exports/*.json
 
 # Update embeddings.db from R2 or local source
 # Run update-embeddings.sh to regenerate
